@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pratik Tilva | Data Science & BI Portfolio</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configure Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#1f2937', // Dark Grey/Slate
+                        'secondary': '#374151', // Slightly lighter grey for cards
+                        'accent': '#10b981', // Emerald Green for accents
+                        'text-light': '#f3f4f6', // Light text
+                        'impact-bg': '#064e3b', // Dark green background for quantified impact
+                        'impact-text': '#6ee7b7', // Lighter green text for numbers
+                        'metric-box': '#1c2533', // Custom box color for metrics
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Apply Inter font globally and smooth scrolling */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0d131f; /* Even darker background */
+            color: #f3f4f6;
+            scroll-behavior: smooth;
+        }
+        /* Custom scrollbar for better aesthetics */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #374151;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1f2937;
+        }
+        .section-header {
+            border-bottom: 2px solid #10b981;
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+        .skill-group-title {
+            color: #10b981;
+            font-weight: 600;
+            margin-top: 0.5rem;
+            margin-bottom: 0.25rem;
+            display: block;
+            border-left: 2px solid #374151;
+            padding-left: 0.5rem;
+        }
+        .skill-badge {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            margin: 0.2rem;
+            border-radius: 9999px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            background-color: #374151;
+            color: #f3f4f6;
+            transition: all 0.2s;
+            line-height: 1.25;
+        }
+        .skill-badge:hover {
+            background-color: #10b981;
+            color: #0d131f;
+            cursor: default;
+        }
+        /* Style for the Case Study cards */
+        .case-study-card {
+            background-color: #2a3447; /* Slightly customized secondary for depth */
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+            border: 1px solid #374151;
+            transition: all 0.3s;
+        }
+        .case-study-card:hover {
+            border-color: #10b981;
+        }
+        .case-study-title {
+            background-color: #10b981;
+            color: #0d131f;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .result-box {
+            background-color: var(--impact-bg); /* Use the defined impact background */
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-top: 1.5rem;
+            border-left: 4px solid var(--impact-text);
+        }
+        .impact-number {
+            font-weight: 700;
+            color: var(--impact-text);
+            font-size: 1.125rem;
+        }
+        .challenge-solution-label {
+            font-weight: 600;
+            color: #cbd5e1;
+        }
+        /* Smaller padding for single-page fit */
+        .max-w-4xl {
+            padding: 1rem 0.5rem;
+        }
+    </style>
+    <!-- Icon for contact links (from lucide-react equivalent) -->
+    <script>
+        function getIcon(name, size = 20) {
+            const icons = {
+                linkedin: `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin"><path d="M16 8a6 6 0 1 1-12 0v7h4v7h4v-7h4v7h4v-7a6 6 0 0 0-6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>`,
+                mail: `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>`,
+                phone: `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6.7-6.7A19.79 19.79 0 0 1 3.07 4.18 2 2 0 0 1 5.07 2h3a2 2 0 0 1 2 2.18 19.79 19.79 0 0 1-.94 5.23 2 2 0 0 1 .43 1.9L10.3 14a2 2 0 0 0 1.66 1.66l2.12-.52a2 2 0 0 1 1.9.43 19.79 19.79 0 0 1 5.23-.94A2 2 0 0 1 22 16.92z"/></svg>`,
+                github: `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.23c2.8.3 5.49-1.34 5.49-5.92-.01-1.33-.5-2.46-1.34-3.53A2 2 0 0 0 16 3a2 2 0 0 0-1.89-1.29c-.77-.07-1.84.17-2.91.75C9.65 3.1 7.42 2.5 5 2.5c-4 0-4.8 2.2-4.8 5.6 0 3.7 2.9 5.8 5.5 6.2-.1.3-.2.7-.2 1.1v4"/><path d="M9 19c-3.1 1.5-5-.5-5-.5"/></svg>`,
+                externalLink: `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>`,
+            };
+            return icons[name] || '';
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('[data-icon]').forEach(el => {
+                const iconName = el.getAttribute('data-icon');
+                const size = el.getAttribute('data-icon-size') || 20;
+                el.innerHTML = getIcon(iconName, size) + ' ' + el.innerHTML;
+            });
+        });
+    </script>
+</head>
+<body class="p-4 md:p-8">
+
+    <div class="max-w-4xl mx-auto shadow-2xl rounded-xl p-6 md:p-10 bg-primary">
+
+        <!-- HEADER SECTION -->
+        <header class="mb-6 border-b border-accent pb-3">
+            <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-1 text-text-light">Pratik Tilva</h1>
+            <p class="text-xl md:text-2xl font-light text-accent mb-3">Sr. Lead Analyst | Data Science & Business Intelligence Strategy</p>
+
+            <!-- Contact/Links -->
+            <div class="flex flex-wrap gap-x-6 gap-y-1 text-sm text-gray-300">
+                <a href="https://www.linkedin.com/in/pratik-tilva" target="_blank" class="flex items-center hover:text-accent transition duration-200" data-icon="linkedin">
+                    linkedin.com/in/pratik-tilva
+                </a>
+                <a href="mailto:pratiktilva@yahoo.com" class="flex items-center hover:text-accent transition duration-200" data-icon="mail">
+                    pratiktilva@yahoo.com
+                </a>
+                <span class="flex items-center" data-icon="phone">865-283-8284</span>
+            </div>
+        </header>
+
+        <!-- PROFESSIONAL SUMMARY & VISION (UPDATED) -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-semibold mb-2 section-header">Professional Profile & Strategic Vision</h2>
+            <p class="text-gray-300 leading-relaxed mb-3">
+                A highly strategic, 10+ year veteran in Data Science and Business Intelligence, specializing in Customer-Marketing Analytics and Predictive Revenue Optimization. I architect and deploy robust data platforms, machine learning models (GBM, K-means, etc.), and advanced analytical frameworks across the Energy, Automotive, and Engineering sectors. My expertise is focused on translating complex data into C-suite actionable strategies that directly enhance profit margins, reduce customer churn, and significantly increase Customer Lifetime Value (CLV).
+            </p>
+            <p class="text-accent text-sm italic">
+                Vision: I drive the commercial impact of data science, bridging the gap between advanced predictive modeling and tangible business outcomes. My focus is on building scalable, platform-based solutions that transform high-volume data into a core competitive advantage for intelligent growth and risk management.
+            </p>
+        </section>
+
+        <!-- TECHNICAL EXPERTISE - CONSOLIDATED -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-semibold mb-3 section-header">Technical Expertise</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-1 text-sm">
+                
+                <!-- Column 1 -->
+                <div>
+                    <span class="skill-group-title">Machine Learning & AI</span>
+                    <div class="flex flex-wrap">
+                        <span class="skill-badge">Python (Scikit-learn, Keras, TensorFlow)</span>
+                        <span class="skill-badge">Deep Learning, NLP, Sentiment Analysis</span>
+                        <span class="skill-badge">Jupyter Notebook, NumPy, Pandas</span>
+                    </div>
+
+                    <span class="skill-group-title">Database & Platforms</span>
+                    <div class="flex flex-wrap">
+                        <span class="skill-badge">SQL (Complex Queries, Optimization, Stored Procedures)</span>
+                        <span class="skill-badge">Snowflake, Oracle, SAS</span>
+                    </div>
+                </div>
+
+                <!-- Column 2 -->
+                <div>
+                    <span class="skill-group-title">BI & Generative AI Tools</span>
+                    <div class="flex flex-wrap">
+                        <span class="skill-badge">Power BI (Copilot)</span>
+                        <span class="skill-badge">Tableau (Pulse)</span>
+                        <span class="skill-badge">Generative AI/Copilot</span>
+                    </div>
+
+                    <span class="skill-group-title">Advanced Analytics & Quant</span>
+                    <div class="flex flex-wrap">
+                        <span class="skill-badge">Predictive Modeling, Pricing Optimization, Churn Reduction</span>
+                        <span class="skill-badge">Regression Analysis, Cohort Analysis</span>
+                        <span class="skill-badge">Adobe Analytics, JIRA, Azure Board</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECT NARRATIVES (Case Study Format) - EXPANDED DESCRIPTIONS -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-semibold mb-3 section-header">High-Impact Case Studies</h2>
+
+            <div class="space-y-6">
+                <!-- Case Study 1: The Intelligent Offer Engine -->
+                <div class="case-study-card">
+                    <div class="case-study-title text-base md:text-lg">The Intelligent Offer Engine: Maximizing CLV and Margin Efficiency (TXU Energy)</div>
+                    <p class="text-gray-400 mb-3 italic text-sm">Focus: Revenue Growth Management, Gradient Boosting Machine (GBM), Advanced SQL & Snowflake</p>
+                    
+                    <p class="text-gray-300 mb-3 text-sm"><span class="challenge-solution-label">Challenge:</span> High customer turnover driven by generic, expensive offers severely eroded margins in a highly competitive market, necessitating a strategic shift to hyper-personalized, margin-aware retention and pricing strategies.</p>
+
+                    <p class="text-gray-300 mb-3 text-sm"><span class="challenge-solution-label">Solution:</span> I took ownership of architecting the Intelligent Offer Engine (IOE), a full-scale Revenue Growth Management platform. My process began with rigorous data engineering, centralizing fragmented billing and service records into a high-performance <span class="text-accent font-semibold">Snowflake feature store</span>. I productionized over 40 critical behavioral, transactional, and cost features using complex <span class="text-accent font-semibold">SQL Stored Procedures</span>. The IOE’s core utilized a dual-score predictive engine built in Python/Scikit-learn: a high-precision <span class="text-accent font-semibold">GBM model</span> determined the exact churn risk, while a parallel statistical model forecasted profitability against volatile energy commodity prices. I then engineered the final optimization layer, dynamically sequencing targeted offers based on critical commercial constraints, translating complex machine learning outputs into a clear, A/B-validated roadmap for profit-accretive growth, securing stakeholder trust across Finance and Pricing teams.</p>
+
+                    <div class="result-box">
+                        <p class="text-text-light font-semibold mb-1 text-sm">Quantified Impact (Profit & Retention):</p>
+                        <p class="text-gray-300 text-sm">The deployment of the IOE delivered targeted renewal hierarchies that secured the highest loss rate benefit in the most price-sensitive segments, successfully reducing overall portfolio attrition by <span class="impact-number">10%</span> and simultaneously increasing Customer Lifetime Value by <span class="impact-number">6%</span>.</p>
+                    </div>
+                </div>
+                
+                <!-- Case Study 2: High-Value Customer Segmentation -->
+                <div class="case-study-card">
+                    <div class="case-study-title text-base md:text-lg">High-Value Customer Segmentation: Driving Profitable Renewable Adoption (TXU Energy)</div>
+                    <p class="text-gray-400 mb-3 italic text-sm">Focus: Unsupervised Machine Learning (K-means), Targeted Marketing Strategy, Resource Allocation</p>
+                    
+                    <p class="text-gray-300 mb-3 text-sm"><span class="challenge-solution-label">Challenge:</span> Inefficient, broad marketing limited the adoption of high-margin renewable energy plans and prevented profitable resource allocation towards customers with a high latent propensity for green energy products.</p>
+
+                    <p class="text-gray-300 mb-3 text-sm"><span class="challenge-solution-label">Solution:</span> I spearheaded this strategic imperative, constructing a comprehensive, multi-dimensional feature set integrating demographics, purchase history, and detailed behavioral data. I implemented an unsupervised <span class="text-accent font-semibold">K-means clustering model</span> over traditional rule-based methods to reliably capture non-obvious preference patterns. After using the Elbow method for optimization, I successfully translated the cluster results into clear business value, naming the high-propensity group the 'Green Adopters' segment. This strategic analysis secured executive approval to fundamentally reallocate marketing resources to a highly targeted digital campaign, proving the methodology was both rigorous and operationally sound for driving profitable growth.</p>
+
+                    <div class="result-box">
+                        <p class="text-text-light font-semibold mb-1 text-sm">Quantified Impact (Revenue Growth):</p>
+                        <p class="text-gray-300 text-sm">The strategic redirection of marketing resources to the highly targeted 'Green Adopters' campaign achieved a <span class="impact-number">15% increase</span> in renewable plan adoption, establishing a profitable pathway for new revenue streams.</p>
+                    </div>
+                </div>
+
+                <!-- Case Study 3: Operational Efficiency and Cost Savings -->
+                <div class="case-study-card">
+                    <div class="case-study-title text-base md:text-lg">Enterprise BI Automation and Operational Cost Savings (TXU & Toyota Motors North America)</div>
+                    <p class="text-gray-400 mb-3 italic text-sm">Focus: Data Pipelining, ETL Automation, Enterprise BI Development</p>
+
+                    <p class="text-gray-300 mb-3 text-sm"><span class="challenge-solution-label">Challenge:</span> Fragmentation of multi-brand data post-acquisition and high reliance on manual ETL and reporting across both energy and automotive sectors led to critical delays in executive decision-making and significant cost overruns.</p>
+
+                    <p class="text-gray-300 mb-3 text-sm"><span class="challenge-solution-label">Solution:</span> I engineered robust, automated <span class="text-accent font-semibold">SQL/Python analytics pipelines</span> to fundamentally unify disparate marketing and operational data, reclaiming hundreds of hours of analyst time. Specifically, I owned the development of consolidated, multi-brand Power BI executive dashboards, integrating data via optimized SQL to deliver a single, real-time portfolio view. For Toyota, I specifically engineered automation for over 3 million service completion transactions, drastically streamlining data retrieval and enhancing compliance visibility across the entire dealer network, transforming resource-intensive manual processes into scalable, reliable BI assets.</p>
+
+                    <div class="result-box">
+                        <p class="text-text-light font-semibold mb-1 text-sm">Quantified Impact (Efficiency & Budget):</p>
+                        <ul class="list-disc pl-5 space-y-0 text-sm">
+                            <li>Automation reclaimed over <span class="impact-number">960 hours annually</span> ($70K+ cost savings) and eliminated 480 manual reporting hours for centralized teams.</li>
+                            <li>Dashboard insights directly guided a <span class="impact-number">$10M budget reallocation</span>, improving lead quality by 10%.</li>
+                            <li>Engineered transaction automation for Toyota, saving 1,900+ partner dealers over <span class="impact-number">7,600 analysis hours annually</span>.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EDUCATION & CERTIFICATES -->
+        <section>
+            <h2 class="text-2xl font-semibold mb-4 section-header">Education & Certifications</h2>
+            <div class="md:grid md:grid-cols-2 gap-6 space-y-4 md:space-y-0 text-gray-300 text-sm">
+                <div>
+                    <h3 class="font-semibold text-text-light mb-1">Education</h3>
+                    <p>Master of Business Administration (MBA) in Marketing | M.I.T School of Management, Pune, India</p>
+                    <p>Bachelor of Business Administration (BBA) | Som-Lalit Institute of Business Administration, Ahmedabad, India</p>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-text-light mb-1">Professional Certifications</h3>
+                    <ul class="list-disc pl-5">
+                        <li>Microsoft Certified Power BI Data Analyst</li>
+                        <li>Associate AI Engineer for Data Scientist</li>
+                        <li>DELL-EMC Professional Data Science Associate</li>
+                        <li>Querying Microsoft SQL Server Database (MCSE)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="mt-8 pt-4 border-t border-secondary text-center text-sm text-gray-500">
+            &copy; 2025 Pratik Tilva. Built for LinkedIn optimization.
+        </footer>
+
+    </div>
+</body>
+</html>
