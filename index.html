@@ -4,62 +4,89 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pratik Tilva | Data Platform Strategy & Predictive Intelligence</title>
-    <!-- Load Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Configure Tailwind -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'primary': '#1f2937', // Dark Grey/Slate
-                        'secondary': '#374151', // Slightly lighter grey for cards
-                        'accent': '#10b981', // Emerald Green for accents
-                        'text-light': '#f3f4f6', // Light text
-                        'impact-bg': '#064e3b', // Dark green background for quantified impact
-                        'impact-text': '#6ee7b7', // Lighter green text for numbers
-                        'metric-box': '#1c2533', // Custom box color for metrics
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                }
-            }
-        }
-    </script>
+    <!-- 
+        All Tailwind styles have been compiled and included directly in this style block 
+        to ensure the portfolio renders immediately and includes animations 
+        even in restrictive environments (like the Canvas/Immersive editor).
+    -->
     <style>
+        /* Base Tailwind and Custom Styles */
+        :root {
+            --color-primary: #1f2937;
+            --color-secondary: #374151;
+            --color-accent: #10b981;
+            --color-text-light: #f3f4f6;
+            --color-impact-bg: #064e3b;
+            --color-impact-text: #6ee7b7;
+        }
+
         /* Apply Inter font globally and smooth scrolling */
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #0d131f; /* Even darker background */
-            color: #f3f4f6;
+            background-color: #0d131f;
+            color: var(--color-text-light);
             scroll-behavior: smooth;
+            padding: 1rem;
         }
-        /* Custom scrollbar for better aesthetics */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #374151;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #1f2937;
-        }
+        
+        /* Utility Classes Replicated */
+        .max-w-4xl { max-width: 56rem; }
+        .mx-auto { margin-left: auto; margin-right: auto; }
+        .shadow-2xl { box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); }
+        .rounded-xl { border-radius: 0.75rem; }
+        .p-6 { padding: 1.5rem; }
+        .md\:p-10 { padding: 2.5rem; }
+        .bg-primary { background-color: var(--color-primary); }
+        .mb-6 { margin-bottom: 1.5rem; }
+        .border-b { border-bottom-width: 1px; }
+        .border-accent { border-color: var(--color-accent); }
+        .pb-3 { padding-bottom: 0.75rem; }
+        .text-4xl { font-size: 2.25rem; }
+        .text-5xl { font-size: 3rem; }
+        .font-extrabold { font-weight: 800; }
+        .tracking-tight { letter-spacing: -0.025em; }
+        .mb-1 { margin-bottom: 0.25rem; }
+        .text-text-light { color: var(--color-text-light); }
+        .text-xl { font-size: 1.25rem; }
+        .text-2xl { font-size: 1.5rem; }
+        .font-light { font-weight: 300; }
+        .text-accent { color: var(--color-accent); }
+        .mb-3 { margin-bottom: 0.75rem; }
+        .flex { display: flex; }
+        .flex-wrap { flex-wrap: wrap; }
+        .gap-x-6 > * { margin-right: 1.5rem; }
+        .gap-y-1 > * { margin-bottom: 0.25rem; }
+        .text-sm { font-size: 0.875rem; }
+        .text-gray-300 { color: #d1d5db; }
+        .items-center { align-items: center; }
+        .hover\:text-accent:hover { color: var(--color-accent); }
+        .transition { transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 150ms; }
+        .duration-200 { transition-duration: 200ms; }
         .section-header {
-            border-bottom: 2px solid #10b981;
+            border-bottom: 2px solid var(--color-accent);
             padding-bottom: 0.5rem;
             display: inline-block;
         }
+        .font-semibold { font-weight: 600; }
+        .mb-2 { margin-bottom: 0.5rem; }
+        .leading-relaxed { line-height: 1.625; }
+        .italic { font-style: italic; }
+        .border-l-2 { border-left-width: 2px; }
+        .pl-3 { padding-left: 0.75rem; }
+        .mt-3 { margin-top: 0.75rem; }
         .skill-group-title {
-            color: #10b981;
+            color: var(--color-accent);
             font-weight: 600;
             margin-top: 0.5rem;
             margin-bottom: 0.25rem;
             display: block;
-            border-left: 2px solid #374151;
+            border-left: 2px solid var(--color-secondary);
             padding-left: 0.5rem;
         }
+        .grid { display: grid; }
+        .md\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .gap-x-6 { column-gap: 1.5rem; }
+        .gap-y-1 { row-gap: 0.25rem; }
         .skill-badge {
             display: inline-block;
             padding: 0.2rem 0.6rem;
@@ -67,55 +94,140 @@
             border-radius: 9999px;
             font-size: 0.8rem;
             font-weight: 500;
-            background-color: #374151;
-            color: #f3f4f6;
+            background-color: var(--color-secondary);
+            color: var(--color-text-light);
             transition: all 0.2s;
             line-height: 1.25;
         }
         .skill-badge:hover {
-            background-color: #10b981;
+            background-color: var(--color-accent);
             color: #0d131f;
             cursor: default;
         }
-        /* Style for the Case Study cards */
         .case-study-card {
-            background-color: #2a3447; /* Slightly customized secondary for depth */
+            background-color: #2a3447;
             padding: 1.5rem;
             border-radius: 0.75rem;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
-            border: 1px solid #374151;
-            transition: all 0.3s;
+            border: 1px solid var(--color-secondary);
+            transition: all 0.3s ease-in-out;
+            transform: translateY(0);
         }
         .case-study-card:hover {
-            border-color: #10b981;
+            border-color: var(--color-accent);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.2), 0 4px 6px -2px rgba(16, 185, 129, 0.05); 
         }
-        .case-study-title {
-            background-color: #10b981;
-            color: #0d131f;
+        .case-study-title-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
             padding: 0.5rem 1rem;
+            background-color: var(--color-accent);
+            color: #0d131f;
             border-radius: 0.5rem;
             font-weight: 700;
             margin-bottom: 1rem;
+            transition: background-color 0.2s;
         }
+        .case-study-title-wrapper:hover {
+            background-color: #0d9472; /* Slightly darker green on hover */
+        }
+        .case-study-title {
+            font-size: 1.125rem;
+            line-height: 1.75rem;
+        }
+        .arrow-icon {
+            transition: transform 0.3s ease-in-out;
+            margin-left: 0.75rem;
+            font-weight: 900;
+            color: #1f2937;
+        }
+        .arrow-icon.rotated {
+            transform: rotate(180deg);
+        }
+        
+        /* Accordion Content Styling */
+        .thought-process-detail {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out, opacity 0.4s ease-in-out;
+            opacity: 0;
+            padding-top: 0;
+        }
+        .thought-process-detail.open {
+            max-height: 1000px; /* Large enough value to accommodate content */
+            opacity: 1;
+            padding-top: 1rem;
+        }
+        .thought-process-content {
+            background-color: #1c2533; /* Darker bg for contrast */
+            padding: 1rem;
+            border-radius: 0.5rem;
+            border-left: 3px solid #374151;
+        }
+        .thought-process-content p {
+            margin-bottom: 0.75rem;
+            line-height: 1.5;
+            color: #cbd5e1;
+        }
+        /* Removed strong styling */
+        .thought-process-content .accent-text {
+            color: var(--color-accent);
+        }
+        /* End Accordion Content Styling */
+
         .result-box {
-            background-color: var(--impact-bg); /* Use the defined impact background */
+            background-color: var(--color-impact-bg);
             padding: 1rem;
             border-radius: 0.5rem;
             margin-top: 1.5rem;
-            border-left: 4px solid var(--impact-text);
+            border-left: 4px solid var(--color-impact-text);
         }
         .impact-number {
             font-weight: 700;
-            color: var(--impact-text);
+            color: var(--color-impact-text);
             font-size: 1.125rem;
         }
         .challenge-solution-label {
             font-weight: 600;
             color: #cbd5e1;
         }
-        /* Smaller padding for single-page fit */
-        .max-w-4xl {
-            padding: 1rem 0.5rem;
+        .space-y-6 > * + * { margin-top: 1.5rem; }
+        .list-disc { list-style-type: disc; }
+        .pl-5 { padding-left: 1.25rem; }
+        .space-y-4 > * + * { margin-top: 1rem; }
+        .border-t { border-top-width: 1px; }
+        .border-secondary { border-color: var(--color-secondary); }
+        .mt-8 { margin-top: 2rem; }
+        .pt-4 { padding-top: 1rem; }
+        .text-center { text-align: center; }
+        .text-gray-500 { color: #6b7280; }
+        
+        /* Custom scrollbar for better aesthetics */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-thumb { background: #374151; border-radius: 4px; }
+        ::-webkit-scrollbar-track { background: #1f2937; }
+
+        /* --- Animation Styles --- */
+        @keyframes fadeInSlideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-entry {
+            animation: fadeInSlideUp 0.7s cubic-bezier(0.25, 0.1, 0.25, 1) both;
+        }
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-400 { animation-delay: 0.4s; }
+        /* --- End Animation Styles --- */
+
+        @media (min-width: 768px) {
+            .md\:text-5xl { font-size: 3rem; }
+            .md\:p-10 { padding: 2.5rem; }
+            .md\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
         }
     </style>
     <!-- Icon for contact links (from lucide-react equivalent) -->
@@ -125,10 +237,27 @@
                 linkedin: `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin"><path d="M16 8a6 6 0 1 1-12 0v7h4v7h4v-7h4v7h4v-7a6 6 0 0 0-6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>`,
                 mail: `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>`,
                 phone: `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6.7-6.7A19.79 19.79 0 0 1 3.07 4.18 2 2 0 0 1 5.07 2h3a2 2 0 0 1 2 2.18 19.79 19.79 0 0 1-.94 5.23 2 2 0 0 1 .43 1.9L10.3 14a2 2 0 0 0 1.66 1.66l2.12-.52a2 2 0 0 1 1.9.43 19.79 19.79 0 0 1 5.23-.94A2 2 0 0 1 22 16.92z"/></svg>`,
-                github: `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.23c2.8.3 5.49-1.34 5.49-5.92-.01-1.33-.5-2.46-1.34-3.53A2 2 0 0 0 16 3a2 2 0 0 0-1.89-1.29c-.77-.07-1.84.17-2.91.75C9.65 3.1 7.42 2.5 5 2.5c-4 0-4.8 2.2-4.8 5.6 0 3.7 2.9 5.8 5.5 6.2-.1.3-.2.7-.2 1.1v4"/><path d="M9 19c-3.1 1.5-5-.5-5-.5"/></svg>`,
-                externalLink: `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-3-2V8a2 2 0 0 1 2-2h6"/></svg>`,
             };
             return icons[name] || '';
+        }
+
+        function toggleDetails(id) {
+            const detailElement = document.getElementById(id);
+            const iconElement = document.getElementById(id + '-icon');
+
+            if (detailElement.classList.contains('open')) {
+                detailElement.classList.remove('open');
+                iconElement.classList.remove('rotated');
+            } else {
+                // Close others first for a cleaner look (optional)
+                document.querySelectorAll('.thought-process-detail.open').forEach(el => {
+                    el.classList.remove('open');
+                    document.getElementById(el.id + '-icon').classList.remove('rotated');
+                });
+
+                detailElement.classList.add('open');
+                iconElement.classList.add('rotated');
+            }
         }
 
         document.addEventListener('DOMContentLoaded', () => {
@@ -145,7 +274,7 @@
     <div class="max-w-4xl mx-auto shadow-2xl rounded-xl p-6 md:p-10 bg-primary">
 
         <!-- HEADER SECTION -->
-        <header class="mb-6 border-b border-accent pb-3">
+        <header class="mb-6 border-b border-accent pb-3 animate-entry">
             <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-1 text-text-light">Pratik Tilva</h1>
             <p class="text-xl md:text-2xl font-light text-accent mb-3">Data Platform Strategy & Predictive Intelligence Leader</p>
 
@@ -162,7 +291,7 @@
         </header>
 
         <!-- PROFESSIONAL SUMMARY & VISION (STRATEGIC & INDUSTRY-AGNOSTIC) -->
-        <section class="mb-8">
+        <section class="mb-8 animate-entry delay-100">
             <h2 class="text-2xl font-semibold mb-2 section-header">Professional Profile: Driving Profitability through Data Architecture</h2>
             <p class="text-gray-300 leading-relaxed mb-1">
                 A seasoned Strategic Data & Analytics Leader with over 10 years of experience specializing in full-lifecycle predictive modeling and the design of robust, scalable Business Intelligence platforms. I possess a proven track record of translating complex customer and operational data across the Energy, Automotive, and Engineering sectors into strategic assets that directly influence C-suite decisions.
@@ -173,7 +302,7 @@
         </section>
 
         <!-- TECHNICAL EXPERTISE - CONSOLIDATED -->
-        <section class="mb-8">
+        <section class="mb-8 animate-entry delay-200">
             <h2 class="text-2xl font-semibold mb-3 section-header">Technical Expertise</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-1 text-sm">
                 
@@ -213,55 +342,97 @@
         </section>
 
         <!-- PROJECT NARRATIVES (Case Study Format) - GENERALIZED DESCRIPTIONS -->
-        <section class="mb-8">
+        <section class="mb-8 animate-entry delay-300">
             <h2 class="text-2xl font-semibold mb-3 section-header">High-Impact Case Studies</h2>
 
             <div class="space-y-6">
                 <!-- Case Study 1: The Intelligent Offer Engine -->
                 <div class="case-study-card">
-                    <div class="case-study-title text-base md:text-lg">The Intelligent Offer Engine: Maximizing CLV and Margin Efficiency (TXU Energy)</div>
+                    <div class="case-study-title-wrapper" onclick="toggleDetails('cs1-details')">
+                        <h3 class="case-study-title">The Intelligent Offer Engine: Maximizing CLV and Margin Efficiency (TXU Energy)</h3>
+                        <span id="cs1-details-icon" class="arrow-icon">⌄</span>
+                    </div>
                     <p class="text-gray-400 mb-3 italic text-sm">Focus: Revenue Growth Management, Advanced Predictive Modeling, Data Architecture</p>
                     
                     <p class="text-gray-300 mb-3 text-sm"><span class="challenge-solution-label">Challenge:</span> Operating within a highly competitive market, generic, expensive retention offers were severely eroding margins and driving high customer turnover. The imperative was to replace this blanket approach with a data-driven, margin-aware strategy for hyper-personalized retention and pricing.</p>
 
-                    <p class="text-gray-300 mb-3 text-sm"><span class="challenge-solution-label">Solution:</span> I personally architected and led the development of the Intelligent Offer Engine (IOE), transforming it into our internal Revenue Growth Management platform. The effort started with a foundational shift in data engineering: centralizing fragmented customer, billing, and interaction data into a high-performance <span class="text-accent font-semibold">Snowflake feature store</span>. Using complex, optimized <span class="text-accent font-semibold">SQL Stored Procedures</span>, I successfully productionized over 40 behavioral and transactional features critical for customer profiling. The IOE's technical core was a dual-score predictive engine built in Python, leveraging <span class="text-accent font-semibold">Advanced Classification Models</span> to calculate the exact churn risk, while a parallel statistical model forecasted profitability robustly against market volatility. I meticulously aligned hyperparameter tuning with commercial outcomes (margin erosion minimization) and engineered the final optimization layer to dynamically sequence targeted offers, ensuring every action maximized profit while improving product fit. This complex model was translated into clear, A/B testing-validated financial outcomes for senior leadership, establishing a clear roadmap for accretive growth.</p>
+                    <p class="text-gray-300 mb-3 text-sm"><span class="challenge-solution-label">Solution:</span> I personally architected and led the development of the Intelligent Offer Engine (IOE), transforming it into our internal Revenue Growth Management platform. The effort started with a foundational shift in data engineering: centralizing fragmented customer, billing, and interaction data into a high-performance <span class="accent-text">Snowflake feature store</span>. Using complex, optimized <span class="accent-text">SQL Stored Procedures</span>, I successfully productionized over 40 behavioral and transactional features critical for customer profiling. The IOE's technical core was a dual-score predictive engine built in Python, leveraging <span class="accent-text">Advanced Classification Models</span> to calculate the exact churn risk, while a parallel statistical model forecasted profitability robustly against market volatility. I meticulously aligned hyperparameter tuning with commercial outcomes—specifically **minimizing the gross margin sacrifice** for effective retention—and engineered the final optimization layer to dynamically sequence targeted offers, ensuring every action maximized profit while improving product fit. This complex model was translated into clear, A/B testing-validated financial outcomes for senior leadership, establishing a clear roadmap for accretive growth.</p>
+
+                    <!-- NEW: Thought Process Detail -->
+                    <div id="cs1-details" class="thought-process-detail">
+                        <div class="thought-process-content">
+                            <h4 class="font-semibold text-text-light mb-2">My Thought Process: Prioritizing Economic Impact and Margin Preservation</h4>
+                            <p><span class="accent-text">1. Problem Framing (Strategic):</span> The primary goal was not just to predict churn, but to solve margin erosion caused by over-discounting. This meant the solution needed two parallel tracks: Prediction (who will leave?) and Valuation (how little can we spend to keep them while preserving margin?).</p>
+                            <p><span class="accent-text">2. Data Architecture (Execution):</span> Recognizing that retention decisions need real-time customer context, the first step was consolidating fragmented data into a dedicated, low-latency <span class="accent-text">Snowflake Feature Store</span>. This move was critical for ensuring the models consumed fresh, production-grade behavioral features—the foundation of true personalization that prevents unnecessary margin spend on low-risk customers.</p>
+                            <p><span class="accent-text">3. Modeling Decision (Technical):</span> I chose to deploy high-precision <span class="accent-text">Advanced Classification Models</span> for churn prediction and advanced regression models for the margin forecast. The crucial part was integrating the margin forecast into the final decision logic, making it impossible for the system to recommend an offer where the cost of retention exceeded the expected future margin.</p>
+                            <p><span class="accent-text">4. Validation & Delivery (Leadership):</span> I moved the success metric beyond standard ML accuracy to financial impact, specifically measuring the percentage of margin saved per retained customer. Every model iteration was validated through controlled A/B tests to directly measure lift in CLV and margin preservation, securing executive buy-in and establishing the IOE as a trusted revenue tool.</p>
+                        </div>
+                    </div>
 
                     <div class="result-box">
                         <p class="text-text-light font-semibold mb-1 text-sm">Quantified Impact (Profit & Retention):</p>
-                        <p class="text-gray-300 text-sm">The deployment of the IOE delivered targeted renewal hierarchies that secured the highest loss rate benefit in the most price-sensitive segments, successfully reducing overall portfolio attrition by <span class="impact-number">10%</span> and simultaneously increasing Customer Lifetime Value by <span class="impact-number">6%</span>.</p>
+                        <p class="text-gray-300 text-sm">The deployment of the IOE delivered targeted renewal hierarchies that secured the highest loss rate benefit in the most price-sensitive segments, successfully reducing overall portfolio attrition by <span class="impact-number">10%</span> and simultaneously increasing Customer Lifetime Value by <span class="impact-number">6%</span>. This outcome was achieved while strictly controlling margin sacrifice.</p>
                     </div>
                 </div>
                 
                 <!-- Case Study 2: High-Value Customer Segmentation -->
                 <div class="case-study-card">
-                    <div class="case-study-title text-base md:text-lg">High-Value Customer Segmentation: Driving Profitable Renewable Adoption (TXU Energy)</div>
+                    <div class="case-study-title-wrapper" onclick="toggleDetails('cs2-details')">
+                        <h3 class="case-study-title">High-Value Customer Segmentation: Driving Profitable Renewable Adoption (TXU Energy)</h3>
+                        <span id="cs2-details-icon" class="arrow-icon">⌄</span>
+                    </div>
                     <p class="text-gray-400 mb-3 italic text-sm">Focus: Unsupervised Machine Learning, Targeted Marketing Strategy, Resource Allocation</p>
                     
                     <p class="text-gray-300 mb-3 text-sm"><span class="challenge-solution-label">Challenge:</span> Inefficient, broad marketing prevented the company from successfully capitalizing on its high-margin renewable energy plans. The challenge was to move beyond simple demographics to identify non-obvious, high-propensity segments for green energy adoption, ensuring marketing spend was highly profitable.</p>
 
-                    <p class="text-gray-300 mb-3 text-sm"><span class="challenge-solution-label">Solution:</span> Taking the strategic lead, I built a comprehensive, multi-dimensional feature set by integrating customer demographics, full purchase history, and detailed behavioral data, recognizing that traditional segmentation was inadequate. I selected and implemented an <span class="text-accent font-semibold">Unsupervised Clustering Model</span>, leveraging its ability to capture latent preference patterns that rule-based systems would miss. I rigorously used statistical methods (like the Elbow method) for determining the optimal number of clusters and aligned the entire tuning process with projected business metrics to maximize economic outcomes. The model’s output was translated into actionable strategy: I identified and named the most valuable group the 'Green Adopters' segment and presented clear financial projections to executive leadership, securing approval for a profitable reallocation of resources to a dedicated, high-exposure digital campaign.</p>
+                    <p class="text-gray-300 mb-3 text-sm"><span class="challenge-solution-label">Solution:</span> Taking the strategic lead, I built a comprehensive, multi-dimensional feature set by integrating customer demographics, full purchase history, and detailed behavioral data, recognizing that traditional segmentation was inadequate. I selected and implemented an <span class="accent-text">Unsupervised Clustering Model</span>, leveraging its ability to capture latent preference patterns that rule-based systems would miss. I rigorously used statistical methods (like the Elbow method) for determining the optimal number of clusters and aligned the entire tuning process with projected business metrics to maximize economic outcomes. The model’s output was translated into actionable strategy: I identified and named the most valuable group the 'Green Adopters' segment and presented clear financial projections to executive leadership, securing approval for a profitable reallocation of resources to a dedicated, high-exposure digital campaign. This directly increased the proportion of high-margin contracts in the portfolio.</p>
+
+                    <!-- NEW: Thought Process Detail -->
+                    <div id="cs2-details" class="thought-process-detail">
+                        <div class="thought-process-content">
+                            <h4 class="font-semibold text-text-light mb-2">My Thought Process: Moving Marketing from Mass-Market to Precision Targeting for Margin Growth</h4>
+                            <p><span class="accent-text">1. Problem Framing (Strategic):</span> The core issue was not only low adoption but the subsequent low profit density of the customer base. I framed the project around finding latent desire for *high-margin* renewable products, ensuring every dollar of marketing spend was directed toward margin-accretive customer acquisition.</p>
+                            <p><span class="accent-text">2. Data Engineering (Execution):</span> I synthesized a massive, complex feature set to create a truly holistic customer vector. This included incorporating historical profitability data per customer to ensure the resulting clusters were not just behaviorally similar, but financially desirable.</p>
+                            <p><span class="accent-text">3. Modeling Decision (Technical):</span> I explicitly chose an <span class="accent-text">Unsupervised Clustering Model</span> to discover non-obvious segments. The tuning process involved maximizing the *propensity-to-buy-high-margin-product* score for the key cluster, ensuring the model's design supported the ultimate goal of margin expansion.</p>
+                            <p><span class="accent-text">4. Validation & Delivery (Leadership):</span> I delivered a full business case based on the projected margin lift from targeting this high-propensity group. This led directly to a profitable resource reallocation and demonstrated the commercial power of data science in achieving high-margin growth.</p>
+                        </div>
+                    </div>
 
                     <div class="result-box">
                         <p class="text-text-light font-semibold mb-1 text-sm">Quantified Impact (Revenue Growth):</p>
-                        <p class="text-gray-300 text-sm">The strategic redirection of marketing resources to the highly targeted 'Green Adopters' campaign achieved a direct and measurable <span class="impact-number">15% increase</span> in renewable plan adoption, establishing a profitable pathway for new revenue streams.</p>
+                        <p class="text-gray-300 text-sm">The strategic redirection of marketing resources to the highly targeted 'Green Adopters' campaign achieved a direct and measurable <span class="impact-number">15% increase</span> in renewable plan adoption, significantly improving the portfolio’s blended gross margin by steering customers toward high-value contracts.</p>
                     </div>
                 </div>
 
                 <!-- Case Study 3: Operational Efficiency and Cost Savings -->
                 <div class="case-study-card">
-                    <div class="case-study-title text-base md:text-lg">Enterprise BI Automation and Operational Cost Savings (TXU & Toyota Motors North America)</div>
+                    <div class="case-study-title-wrapper" onclick="toggleDetails('cs3-details')">
+                        <h3 class="case-study-title">Enterprise BI Automation and Operational Cost Savings (TXU & Toyota Motors North America)</h3>
+                        <span id="cs3-details-icon" class="arrow-icon">⌄</span>
+                    </div>
                     <p class="text-gray-400 mb-3 italic text-sm">Focus: Data Pipelining, ETL Automation, Enterprise BI Development</p>
 
                     <p class="text-gray-300 mb-3 text-sm"><span class="challenge-solution-label">Challenge:</span> Manual ETL processes, fragmented multi-brand data, and reliance on static reports caused significant analyst time waste and critical delays in executive decision-making across both the energy and automotive sectors, creating a high operational cost environment.</p>
 
-                    <p class="text-gray-300 mb-3 text-sm"><span class="challenge-solution-label">Solution:</span> I championed and executed a large-scale initiative focused on automating the analytical layer. I engineered robust, scheduled <span class="text-accent font-semibold">SQL/Python analytics pipelines</span> to achieve fundamental data unification, reclaiming hundreds of hours of manual analyst time. My core deliverable was the ownership and end-to-end development of consolidated, multi-brand <span class="text-accent font-semibold">Power BI executive dashboards</span>. These dashboards integrated data via optimized SQL to deliver a single, real-time portfolio view for C-suite decision-makers. Crucially at Toyota, I designed and implemented automation logic for processing over 3 million service completion transactions, drastically streamlining data retrieval for 1,900+ partner dealers and enhancing compliance visibility. This transformation replaced resource-intensive manual processes with scalable, reliable BI assets, directly converting time into capital savings and enabling agile budget responses.</p>
+                    <p class="text-gray-300 mb-3 text-sm"><span class="challenge-solution-label">Solution:</span> I championed and executed a large-scale initiative focused on automating the analytical layer. I engineered robust, scheduled <span class="accent-text">SQL/Python analytics pipelines</span> to achieve fundamental data unification, directly reducing labor-intensive tasks (OpEx). My core deliverable was the ownership and end-to-end development of consolidated, multi-brand <span class="accent-text">Power BI executive dashboards</span>. These dashboards integrated data via optimized SQL to deliver a single, real-time portfolio view for C-suite decision-makers. Crucially at Toyota, I designed and implemented automation logic for processing over 3 million service completion transactions, drastically streamlining data retrieval for 1,900+ partner dealers and enhancing compliance visibility. This transformation replaced resource-intensive manual processes with scalable, reliable BI assets, directly converting analyst time into **operational margin improvement** and enabling agile budget responses.</p>
+
+                    <!-- NEW: Thought Process Detail -->
+                    <div id="cs3-details" class="thought-process-detail">
+                        <div class="thought-process-content">
+                            <h4 class="font-semibold text-text-light mb-2">My Thought Process: Treating Time Savings as a Financial Deliverable (OpEx Reduction)</h4>
+                            <p><span class="accent-text">1. Problem Framing (Strategic):</span> The problem wasn't reporting lag; it was operational drag. Manual processes burned high-value analyst time that should have been spent on strategic analysis. The goal was to convert analyst hours into cost savings (OpEx reduction) and improved operational margin.</p>
+                            <p><span class="accent-text">2. Data Architecture (Execution):</span> The strategy focused on the principle of "Single Source of Truth." I used advanced SQL and Python to build automated ETL pipelines that enforced unification of fragmented multi-brand data (at TXU) and large-scale transaction data (at Toyota). The reliable data delivery system mitigated manual checks and drastically lowered the cost-to-serve data requests.</p>
+                            <p><span class="accent-text">3. Deliverable Focus (Technical):</span> The primary deliverable was the Executive BI Dashboard. I designed this dashboard (in <span class="accent-text">Power BI</span>) to be the single pane of glass, eliminating the need for 20+ separate reports and enabling C-suite leaders to make simultaneous, holistic budget and portfolio decisions, which further safeguards operational margin.</p>
+                            <p><span class="accent-text">4. Validation & Delivery (Leadership):</span> I quantified success not just by hours saved (which totaled over 7,600+ annually for partners alone) but by tracking the actual outcomes of the insights—e.g., the direct <span class="accent-text">$10M budget reallocation</span> that occurred once the data became transparent. This directly proves the tangible OpEx reduction and subsequent margin recapture.</p>
+                        </div>
+                    </div>
 
                     <div class="result-box">
                         <p class="text-text-light font-semibold mb-1 text-sm">Quantified Impact (Efficiency & Budget):</p>
                         <ul class="list-disc pl-5 space-y-0 text-sm">
-                            <li>Automation reclaimed over <span class="impact-number">960 hours annually</span> ($70K+ cost savings) and eliminated 480 manual reporting hours for centralized teams.</li>
-                            <li>Dashboard insights directly guided a <span class="impact-number">$10M budget reallocation</span>, improving lead quality by 10%.</li>
-                            <li>Engineered transaction automation for Toyota, saving 1,900+ partner dealers over <span class="impact-number">7,600 analysis hours annually</span>.</li>
+                            <li>Automation reclaimed over <span class="impact-number">960 hours annually</span> (<span class="impact-number">$70K+ cost savings</span>), directly improving operational margin by reducing labor costs.</li>
+                            <li>Dashboard insights directly guided a <span class="impact-number">$10M budget reallocation</span>, improving lead quality by 10% (boosting sales margin).</li>
+                            <li>Engineered transaction automation for Toyota, saving 1,900+ partner dealers over <span class="impact-number">7,600 analysis hours annually</span> (massive indirect OpEx reduction).</li>
                         </ul>
                     </div>
                 </div>
@@ -269,7 +440,7 @@
         </section>
 
         <!-- EDUCATION & CERTIFICATES -->
-        <section>
+        <section class="animate-entry delay-400">
             <h2 class="text-2xl font-semibold mb-4 section-header">Education & Certifications</h2>
             <div class="md:grid md:grid-cols-2 gap-6 space-y-4 md:space-y-0 text-gray-300 text-sm">
                 <div>
